@@ -16,18 +16,18 @@
       <button @click="togglePage(2)">Add</button>
     </nav>
     <div id="browse" v-if="page === 1">
-      <div class="car-container">
+      <div class="car-container" v-for="car in carList">
         <img class="car-image" src="https://ecdautodesign.com/wp-content/uploads/2024/04/classic-mustang-blue-hero.jpg"
           alt="car">
         <div class="car-info">
-          <p>in stock</p>
-          <h4>Ford Mustang Gt</h4>
-          <h5>price: 100,000</h5>
+          <p>{{car.status}}</p>
+          <h4>{{car.name}}</h4>
+          <h5>price: {{car.price}}</h5>
           <div>
             <hr>
-            <p>Millage</p>
-            <p>Exterior: color</p>
-            <p>Interior: color</p>
+            <p>Millage: {{car.mileage}}</p>
+            <p>Exterior: {{exterior}}</p>
+            <p>Interior: {{interior}}</p>
             <hr>
           </div>
           <div>

@@ -1,32 +1,29 @@
-const express = require('express');
-const model = require('./model');
-const cors = require('cors');
+const express = require('express')
+const model = require('./model')
+const cors = require('cors')
+require("dotenv").config()
 
 
-
-const app = express();
+const app = express()
 app.use(cors())
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }))
 
-// retirves all cars from the database
+// retrieves all cars from the database
 app.get('/cars' , async function (req, res) {
     try {
         let car = await model.Car.find()
-        res.json(car);
+        res.json(car)
     }
     catch (err) {
-        console.error(err);
+        console.error(err)
         response.status(400).send("Generic Error")
-
     }
-
-
 })
 
 app.get('/cars/:id' , async function (req, res) {
     try {
         let car = await model.Car.findById({_id: req.params.id})
-        res.json(car);
+        res.json(car)
     }
     catch (err) {
         console.error(err);
@@ -38,60 +35,61 @@ app.post('/cars', async function (req, res) {
     const data = (req.body)
     try{
         let new_car = new model.Car({
-        name: data.name,
-        horsepower: data.horsepower,
-        color: data.color,
-        price: data.price,
-    
+            name: data.name,
+            color: data.color,
+            price: parseFloat(data.price),
+            mileage: parseFloat(data.mileage),
+            transmission: data.transmission,
+            drive: data.drive
         })
-        let error = new_car.validateSync();
+        let error = new_car.validateSync()
         if (error) {
-        response.status(400).json(error);
-        return;
+            response.status(400).json(error)
+            return
         }
-    
         new_car.save().then(() => {
-        res.status(201).send("Post Success!");
+            res.status(201).send("Post Success!");
         })
     }
     catch(err){
-        console.log(err);
-        res.status(400).send("Generic Error");
+        console.log(err)
+        res.status(400).send("Generic Error")
     }
 
 
-});
+})
 
 app.delete('/cars/:id', async function (req, res) {
     try{
-        let isDeleted = await model.Car.findOneAndDelete({_id: req.params.id});
+        let isDeleted = await model.Car.findOneAndDelete({_id: req.params.id})
         if(!isDeleted){
-        res.status(404).send("could not find car")
-        return;
+            res.status(404).send("could not find car")
+            return
         }
         res.status(204).send("car delete")
     }
     catch(err){
         console.log(err)
         res.status(400).send("generic error")
-
     }
 })
 
 app.put('/cars/:id', async function(req, res){
 
     try{
-        const data = (req.body);
+        const data = req.body
         const updatedCar = {
-        name: data.name,
-        horsepower: data.horsepower,
-        color: data.color,
-        price: data.price,
-        };
+            name: data.name,
+            color: data.color,
+            price: parseFloat(data.price),
+            mileage: parseFloat(data.mileage),
+            transmission: data.transmission,
+            drive: data.drive
+        }
         let isUpdated = await model.Car.findByIdAndUpdate({_id: req.params.id} , updatedCar, {new: true})
         if(!isUpdated){
-        res.status(404).send("car not found")
-        return;
+            res.status(404).send("car not found")
+            return;
         }
         res.status(204).json(isUpdated)
 

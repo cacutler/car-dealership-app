@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+require("dotenv").config()
 
 mongoose.connect(process.env.DBPASSWORD);
 
@@ -9,10 +9,6 @@ const CarSchema = new mongoose.Schema(
     type: String,
     required: [true, "Car needs to have a name"]
   },
-  horsepower: {
-    type: Number,
-    required: [true, "must have an Hp number"],
-  },
   color: {
     type: String,
     required: [true, "Car needs to have a color"]
@@ -21,6 +17,18 @@ const CarSchema = new mongoose.Schema(
     type: Number,
     required: [true, "Car needs to have a price"]
   },
+  mileage: {
+    type: Number,
+    required: [true, "Car needs to have a mileage"]
+  },
+  transmission: {
+    type: String,
+    required: [true, "Car needs to have a transmission type"]
+  },
+  drive: {
+    type: String,
+    required: [true, "Car needs to have a wheel drive"]
+  }
 },
 {timestamps: true}  
 );

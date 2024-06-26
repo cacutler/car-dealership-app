@@ -34,6 +34,10 @@ const CarSchema = new mongoose.Schema(
   make: {
     type: String,
     required: [true, "Car needs to have a make"]
+  },
+  status: {
+    type: String,
+    required: [true, "Car needs to have a status"]
   }
 },
 {timestamps: true}  

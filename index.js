@@ -38,7 +38,8 @@ app.post('/cars', async function (req, res) {
             mileage: parseFloat(data.mileage),
             transmission: data.transmission,
             drive: data.drive,
-            make: data.make
+            make: data.make,
+            status: data.status
         })
         let error = new_car.validateSync()
         if (error) {
@@ -79,7 +80,8 @@ app.put('/cars/:id', async function(req, res){
             mileage: parseFloat(data.mileage),
             transmission: data.transmission,
             drive: data.drive,
-            make: data.make
+            make: data.make,
+            status: data.status
         }
         let isUpdated = await model.Car.findByIdAndUpdate({_id: req.params.id} , updatedCar, {new: true})
         if(!isUpdated){

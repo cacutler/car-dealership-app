@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 require("dotenv").config()
-
 mongoose.connect(process.env.DBPASSWORD);
-
 const CarSchema = new mongoose.Schema(
 {
   name: {
@@ -40,9 +38,7 @@ const CarSchema = new mongoose.Schema(
 },
 {timestamps: true}  
 );
-
 const Car = mongoose.model('Car', CarSchema);
-
 module.exports = {
   Car: Car
 }

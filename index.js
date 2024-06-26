@@ -2,12 +2,9 @@ const express = require('express')
 const model = require('./model')
 const cors = require('cors')
 require("dotenv").config()
-
-
 const app = express()
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
-
 // retrieves all cars from the database
 app.get('/cars' , async function (req, res) {
     try {
@@ -19,7 +16,6 @@ app.get('/cars' , async function (req, res) {
         response.status(400).send("Generic Error")
     }
 })
-
 app.get('/cars/:id' , async function (req, res) {
     try {
         let car = await model.Car.findById({_id: req.params.id})
@@ -30,7 +26,6 @@ app.get('/cars/:id' , async function (req, res) {
         response.status(400).send("Generic Error")
     }
 })
-
 app.post('/cars', async function (req, res) {
     const data = (req.body)
     try{
@@ -57,10 +52,7 @@ app.post('/cars', async function (req, res) {
         console.log(err)
         res.status(400).send("Generic Error")
     }
-
-
 })
-
 app.delete('/cars/:id', async function (req, res) {
     try{
         let isDeleted = await model.Car.findOneAndDelete({_id: req.params.id})
@@ -75,9 +67,7 @@ app.delete('/cars/:id', async function (req, res) {
         res.status(400).send("generic error")
     }
 })
-
 app.put('/cars/:id', async function(req, res){
-
     try{
         const data = req.body
         const updatedCar = {
@@ -96,14 +86,12 @@ app.put('/cars/:id', async function(req, res){
             return;
         }
         res.status(204).json(isUpdated)
-
     }
     catch(err){
         console.log(err)
         res.status(400).send("generic error")
     }
 });
-
 app.listen(8080, () => {
     console.log("listening on port 8080")
 })

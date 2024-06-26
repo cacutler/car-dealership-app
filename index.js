@@ -36,7 +36,8 @@ app.post('/cars', async function (req, res) {
             transmission: data.transmission,
             drive: data.drive,
             make: data.make,
-            status: data.status
+            status: data.status,
+            url: data.url
         })
         let error = new_car.validateSync()
         if (error) {
@@ -76,7 +77,8 @@ app.put('/cars/:id', async function(req, res){
             transmission: data.transmission,
             drive: data.drive,
             make: data.make,
-            status: data.status
+            status: data.status,
+            url: data.url
         }
         let isUpdated = await model.Car.findByIdAndUpdate({_id: req.params.id}, updatedCar, {new: true})
         if (!isUpdated) {
@@ -88,6 +90,12 @@ app.put('/cars/:id', async function(req, res){
         console.log(err)
         res.status(400).send("generic error")
     }
+})
+app.get("/cars/toyota", () => {
+
+})
+app.get("/cars/ford", () => {
+
 })
 app.listen(8080, () => {
     console.log("listening on port 8080")

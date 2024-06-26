@@ -38,6 +38,10 @@ const CarSchema = new mongoose.Schema(
   status: {
     type: String,
     required: [true, "Car needs to have a status"]
+  },
+  url: {
+    type: String,
+    required: [true, "Car needs an image url"]
   }
 },
 {timestamps: true}  

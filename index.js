@@ -36,7 +36,8 @@ app.post('/cars', async function (req, res) {
     try{
         let new_car = new model.Car({
             name: data.name,
-            color: data.color,
+            exterior: data.exterior,
+            interior: data.interior,
             price: parseFloat(data.price),
             mileage: parseFloat(data.mileage),
             transmission: data.transmission,
@@ -81,7 +82,8 @@ app.put('/cars/:id', async function(req, res){
         const data = req.body
         const updatedCar = {
             name: data.name,
-            color: data.color,
+            exterior: data.exterior,
+            interior: data.interior,
             price: parseFloat(data.price),
             mileage: parseFloat(data.mileage),
             transmission: data.transmission,

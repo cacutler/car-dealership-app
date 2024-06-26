@@ -9,9 +9,13 @@ const CarSchema = new mongoose.Schema(
     type: String,
     required: [true, "Car needs to have a name"]
   },
-  color: {
+  exterior: {
     type: String,
-    required: [true, "Car needs to have a color"]
+    required: [true, "Car needs to have an exterior color"]
+  },
+  interior: {
+    type: String,
+    required: [true, "Car needs to have an interior color"]
   },
   price: {
     type: Number,

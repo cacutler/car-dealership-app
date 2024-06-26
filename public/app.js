@@ -6,13 +6,15 @@ Vue.createApp({
       page: 1,
       car: {
         name: "",
-        exColor: "",
-        inColor: "",
+        exterior: "",
+        interior: "",
         price: "",
         mileage: "",
         transmission: "",
-        driveType: "",
-        make: ""
+        drive: "",
+        make: "",
+        status: "In Stock",
+        url: "",
       },
       carList: [],
 
@@ -31,41 +33,30 @@ Vue.createApp({
     addCar: async function(){
       try{
         let myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-        let encodedData = "name=" + encodeURIComponent(this.car.name) + 
-        "exterior=" + encodeURIComponent(this.car.exColor) + 
-        "exterior=" + encodeURIComponent(this.car.exColor) +
-        "interior=" + encodeURIComponent(this.car.inColor) +
-        "price=" + encodeURIComponent(this.car.price) +
-        "mileage=" + encodeURIComponent(this.car.mileage) +
-        "transmission=" + encodeURIComponent(this.car.transmission) +
-        "drive=" + encodeURIComponent(this.car.driveType) +
-        "make=" + encodeURIComponent(this.car.make) +
-        "status=" + encodeURIComponent("in stock");
-
+        myHeaders.append('Content-Type', 'application/json');
         let requestOptions = {
-          
           method: 'POST',
-          body: encodedData,
-          headers: myHeaders, 
-
-        }
+          headers: myHeaders,
+          body: JSON.stringify(this.car),
+        };
         let response = await fetch(`${URL}/cars`, requestOptions);
   
         if (response.ok) {
           await this.getCarList();
           this.car = {
             name: "",
-            exColor: "",
-            inColor: "",
+            exterior: "",
+            interior: "",
             price: "",
             mileage: "",
             transmission: "",
-            driveType: "",
-            make: ""
+            drive: "",
+            make: "",
+            status: "In Stock",
+            url: "",
           };
         } else {
-          alert('Error adding company');
+          alert('Error adding car');
         }
         
 

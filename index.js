@@ -5,7 +5,7 @@ require("dotenv").config()
 const app = express()
 app.use(express.static("public"))
 app.use(cors())
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.get('/cars' , async function (req, res) { //retrieves all cars from the database
     try {
         let car = await model.Car.find()
@@ -98,5 +98,5 @@ app.get("/cars/ford", () => {
 
 })
 app.listen(8080, () => {
-    console.log("listening on port 8080")
+    console.log("listening on port http://localhost:8080")
 })

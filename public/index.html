@@ -17,8 +17,7 @@
     </nav>
     <div id="browse" v-if="page === 1">
       <div class="car-container" v-for="car in carList">
-        <img class="car-image" src="https://ecdautodesign.com/wp-content/uploads/2024/04/classic-mustang-blue-hero.jpg"
-          alt="car">
+        <img class="car-image" v-bind:src="car.url" alt="car">
         <div class="car-info">
           <p>{{car.status}}</p>
           <h4>{{car.name}}</h4>
@@ -26,8 +25,8 @@
           <div>
             <hr>
             <p>Millage: {{car.mileage}}</p>
-            <p>Exterior: {{exterior}}</p>
-            <p>Interior: {{interior}}</p>
+            <p>Exterior: {{car.exterior}}</p>
+            <p>Interior: {{car.interior}}</p>
             <hr>
           </div>
           <div>
@@ -46,11 +45,11 @@
         </div>
         <div>
           <h4>Exterior Color: </h4>
-          <input type="text" v-model="car.exColor">
+          <input type="text" v-model="car.exterior">
         </div>
         <div>
           <h4>Interior Color: </h4>
-          <input type="text" v-model="car.inColor">
+          <input type="text" v-model="car.interior">
         </div>
         <div>
           <h4>Price: </h4>
@@ -66,12 +65,17 @@
         </div>
         <div>
           <h4>drive type: </h4>
-          <input type="text" v-model="car.driveType">
+          <input type="text" v-model="car.drive">
         </div>
         <div>
           <h4>Make: </h4>
           <input type="text" v-model="car.make">
         </div>
+        <div>
+          <h4>Image URL: </h4>
+          <input type="text" v-model="car.url">
+        </div>
+
         <div>
           <button type="button" @click="addCar()">Add</button>
           <button type="button">Discard</button>

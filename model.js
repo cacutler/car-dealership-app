@@ -28,6 +28,10 @@ const CarSchema = new mongoose.Schema(
   drive: {
     type: String,
     required: [true, "Car needs to have a wheel drive"]
+  },
+  make: {
+    type: String,
+    required: [true, "Car needs to have a make"]
   }
 },
 {timestamps: true}  

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <nav>
+      <button @click="togglePage(1)">Browse</button>
+      <button @click="togglePage(2)">Add</button>
+    </nav>
+    <div id="browse" v-if="page === 1">
+      <div class="car-container">
+        <img class="car-image" src="https://ecdautodesign.com/wp-content/uploads/2024/04/classic-mustang-blue-hero.jpg"
+          alt="car">
+        <div class="car-info">
+          <p>in stock</p>
+          <h4>Ford Mustang Gt</h4>
+          <h5>price: 100,000</h5>
+          <div>
+            <hr>
+            <p>Millage</p>
+            <p>Exterior: color</p>
+            <p>Interior: color</p>
+            <hr>
+          </div>
+          <div>
+            <button>Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id=" add" v-if="page === 2">
+
+      <div id="add-form">
+        <h1>Add Form</h1>
+        <div>
+          <h4>Name: </h4>
+          <input type="text" v-model="car.name">
+        </div>
+        <div>
+          <h4>Exterior Color: </h4>
+          <input type="text" v-model="car.exColor">
+        </div>
+        <div>
+          <h4>Interior Color: </h4>
+          <input type="text" v-model="car.inColor">
+        </div>
+        <div>
+          <h4>Price: </h4>
+          <input type="text" v-model="car.price">
+        </div>
+        <div>
+          <h4>Mileage: </h4>
+          <input type="text" v-model="car.mileage">
+        </div>
+        <div>
+          <h4>transmission: </h4>
+          <input type="text" v-model="car.transmission">
+        </div>
+        <div>
+          <h4>drive type: </h4>
+          <input type="text" v-model="car.driveType">
+        </div>
+        <div>
+          <h4>Make: </h4>
+          <input type="text" v-model="car.make">
+        </div>
+        <div>
+          <button type="button" @click="addCar()">Add</button>
+          <button type="button">Discard</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>

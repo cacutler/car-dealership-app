@@ -1,0 +1,83 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+nav button{
+  background-color: white;
+  border: none;
+  font-size: x-large;
+  padding: 2rem;
+  width: 200px;
+}
+nav button:hover{
+  background-color: #124e66;
+  color: white;
+  transition: 250ms;
+}
+#browse{
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+.car-image{
+  width: 90%;
+  height: auto;
+}
+.car-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+  background-color: rgb(243, 239, 239);
+  gap: .5rem;
+}
+.car-info{
+  display: flex;
+  /* align-items: center;
+  justify-content: center; */
+  flex-direction: column;
+  gap: .5rem;
+  width: 90%;
+}
+.car-info div{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+#add-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+#add-form div{
+  display: flex;
+  gap: 1rem;
+  /* gap: .6rem; */
+}
+#add-form div h4{
+  width: 150px;
+}
+#add-form div input{
+  width: 300px;
+  height: 30px;
+}
+#add-form button{
+  padding: 1rem;
+  background-color: #124e66;
+  color: white;
+  width: 100px;
+}
+#add-form button:hover{
+  background-color: #3d7c95;
+  transition: 250ms;
+
+}
